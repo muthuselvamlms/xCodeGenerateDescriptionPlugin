@@ -107,6 +107,10 @@
 
 - (void)writeMethodToFileWithDescriptionMethod:(NSString *)descriptionMethod {
     [DTXcodeUtils openFile:[DTXcodeUtils getDotMFilePathOfCurrentEditFile]];
+    [self performSelector:@selector(givesometimeforUItoUpdate:) withObject:descriptionMethod afterDelay:0.1];
+}
+
+- (void) givesometimeforUItoUpdate:(NSString *)descriptionMethod {
     DVTSourceTextView *textView = [DTXcodeUtils currentSourceTextView];
     NSString *textViewText = [textView string];
     NSRange contentRange = [DTXcodeUtils getClassImplementContentRangeWithClassName:self.currentClass mFileText:textViewText];
